@@ -44,7 +44,7 @@ contract tokens {
             _;
         } else if (playerId > 1){
             for (uint i = 1; i <= playerId; i++){
-                if (team[i].name == name){
+                if (team[i - 1].name == name){
                     break;
                 } 
                 else {
