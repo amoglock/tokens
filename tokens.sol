@@ -24,16 +24,38 @@ contract tokens {
     player[] team;
     tradePlayers[] market;
 
+    uint marker = 1;
 
     mapping(uint => uint) tokenToOwner;
+    mapping(string => uint) getId;
 
     modifier onlyOwner(uint tokenId) {
-    require(msg.pubkey() == tokenToOwner[tokenId],101);
-    tvm.accept();    
-    _;
+        require(msg.pubkey() == tokenToOwner[tokenId],101);
+        tvm.accept();    
+        _;
     }
 
-    function createToken(string name, uint age, uint points) public returns(string) {
+    // Modifier not work
+  /*  modifier checkName(string name) {
+        uint playerId = marker;
+        getId[name] = playerId;       
+        if (playerId == 1){
+            playerId++;
+            _;
+        } else if (playerId > 1){
+            for (uint i = 1; i <= playerId; i++){
+                if (team[i].name == name){
+                    break;
+                } 
+                else {
+                 playerId++;
+                 _;
+                }
+            }
+        }
+    } */
+
+    function createToken(string name, uint age, uint points) public checkName(name)  returns(string) {
         tvm.accept();
         team.push(player(name, age, points));
         market.push(tradePlayers(name, false, 0));
