@@ -72,6 +72,8 @@
 		{"name":"_constructorFlag","type":"bool"},
 		{"components":[{"name":"name","type":"string"},{"name":"age","type":"uint256"},{"name":"points","type":"uint256"}],"name":"team","type":"tuple[]"},
 		{"components":[{"name":"name","type":"string"},{"name":"trade","type":"bool"},{"name":"price","type":"uint256"}],"name":"market","type":"tuple[]"},
-		{"name":"tokenToOwner","type":"map(uint256,uint256)"}
+		{"name":"marker","type":"uint256"},
+		{"name":"tokenToOwner","type":"map(uint256,uint256)"},
+		{"name":"getId","type":"optional(cell)"}
 	]
 }
